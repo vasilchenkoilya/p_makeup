@@ -53,7 +53,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             {% if user.is_authenticated and user.is_superuser %}
-                                <li><a class="dropdown-item" href="#">Admin Panel</a></li>
+                                <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin Panel</a></li>
                                 <li><a class="dropdown-item" href="#">Logout</a></li>
                             {% elif user.is_authenticated and not user.is_superuser %}
                                 <li><a class="dropdown-item" href="#">My Visits</a></li>

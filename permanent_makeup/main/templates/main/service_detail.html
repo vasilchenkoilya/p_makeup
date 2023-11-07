@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card mb-4 shadow-sm">
+        {% if service.image %}
+        <img class="card-img-top" src="{{ service.image.url }}" alt="{{ service.name }}">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ service.name }}</h5>
+            <p class="card-text">{{ service.description }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">{{ service.price }}£</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -10,3 +10,7 @@ def gallery_view(request):
 def index(request):
     services = models.Service.objects.all()
     return render(request, 'main/index.html', {'services': services})
+
+def service_detail(request, service_slug):
+    service = get_object_or_404(models.Service, slug=service_slug)
+    return render(request, 'main/service_detail.html', {'service': service})

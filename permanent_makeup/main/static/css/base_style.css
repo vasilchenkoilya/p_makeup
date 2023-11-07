@@ -52,3 +52,6 @@ header {
     .card-body {
     overflow-y: auto; 
     }
+.form-text.text-muted {
+    color: #85888a !important;
+    }

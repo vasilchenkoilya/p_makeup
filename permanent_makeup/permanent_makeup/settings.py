@@ -147,5 +147,14 @@ MEDIA_ROOT = BASE_DIR.joinpath(MEDIA_URL)
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'index'
+
+# settings.py для отправки email через Gmail
+EMAIL_BACKEND = local_settings.EMAIL_BACKEND
+EMAIL_HOST = local_settings.EMAIL_HOST
+EMAIL_PORT = local_settings.EMAIL_PORT
+EMAIL_USE_TLS = local_settings.EMAIL_USE_TLS
+EMAIL_HOST_USER = local_settings.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = local_settings.EMAIL_HOST_PASSWORD
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

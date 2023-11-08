@@ -42,8 +42,17 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review by {self.author.username} on {self.created_at.strftime('%Y-%m-%d')}"
+    
+
+class TimeSlot(models.Model):
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True, blank=True)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    is_available = models.BooleanField(default=True)
 
 
 class Reservation(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    time_slot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE, default=None)
+    

@@ -157,4 +157,7 @@ EMAIL_USE_TLS = local_settings.EMAIL_USE_TLS
 EMAIL_HOST_USER = local_settings.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = local_settings.EMAIL_HOST_PASSWORD
 
+SITE_NAME = "megamakeup"
+DOMAIN = "megamakeup.com"
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -19,5 +19,10 @@
       </div>
     {% endfor %}
     <button type="submit" class="btn btn-primary">Login</button>
+    <p class="mt-3">
+      Don't have an account? <a href="{% url 'signup' %}" class="text-light">Register</a>
+    </p>
+    <p class="mt-3">
+      <a href="{% url 'password_reset' %}" class="text-light">Forgot password?</a>
   </form>
 {% endblock %}

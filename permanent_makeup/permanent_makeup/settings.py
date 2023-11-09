@@ -53,6 +53,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'main',	
     'accounts',
+    'bootstrap_datepicker_plus',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,6 +1,14 @@
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import pre_save, post_save, post_delete
 from django.dispatch import receiver
+from django.core.exceptions import ValidationError
+from django.db import IntegrityError
 from .models import Reservation, TimeSlot
+
+
+@receiver(pre_save, sender=Reservation)
+def check_timeslot_availability(sender, instance, **kwargs):
+    if not instance.time_slot.is_available:
+        raise ValidationError("This time slot is not available.")
 
 @receiver(post_save, sender=Reservation)
 def mark_timeslot_unavailable(sender, instance, created, **kwargs):

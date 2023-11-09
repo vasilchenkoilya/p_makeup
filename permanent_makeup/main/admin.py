@@ -43,3 +43,10 @@ class TimeSlotAdminForm(forms.ModelForm):
 @admin.register(models.TimeSlot)           
 class TimeSlotAdmin(admin.ModelAdmin):
     form = TimeSlotAdminForm
+
+
+@admin.register(models.Reservation)
+class ReservationAdmin(admin.ModelAdmin):
+    list_display = ['service', 'customer', 'time_slot']
+    list_filter = ['service', 'customer', 'time_slot']
+    search_fields = ['service', 'customer', 'time_slot']

@@ -1,0 +1,42 @@
+{ {% extends "base.html" %}}
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Treatment</th>
+        <th scope="col">Visit date</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for reservation, formatted_date in formatted_reservations %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ reservation.service.name }}</td>
+          <td>{{ formatted_date }}</td>
+          <td>
+            {% if not reservation.time_slot.is_available  and reservation.time_slot.start_time > today_time %}
+              Available
+            {% elif reservation.time_slot.end_time < today_time %}
+              Complited
+            {% else %}
+              Unavailable / Canceled
+            {% endif %}</td>
+            <td>
+              {% if not reservation.time_slot.is_available  and reservation.time_slot.start_time > today_time %}
+                <button type="button" class="btn btn-secondary">  Cancell my visit </button>
+              {% elif reservation.time_slot.end_time < today_time %}
+                <button type="button" class="btn btn-secondary">Leave Review</button>
+              {% else %}
+                <button type="button" class="btn btn-secondary">Book new visit</button>
+              {% endif %}
+            </td> 
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+```

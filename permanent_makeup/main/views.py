@@ -5,6 +5,10 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from permanent_makeup.local_settings import ADMMIN_EMAIL
+from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils import timezone
+
 
 def gallery_view(request):
     images = models.WorkGalllery.objects.all().order_by('-created_at')
@@ -73,6 +77,30 @@ def reservation_view(request):
         form = BookingForm()
 
     return render(request, template_name, {'form': form})
+
+class MyReservationsView(LoginRequiredMixin, ListView):
+    template_name = 'reservation/my_reservations.html'
+    context_object_name = 'reservations'
+    model = models.Reservation
+
+    def get_queryset(self):
+        queryset = super().get_queryset().filter(customer=self.request.user).order_by('time_slot__start_time')
+        return queryset
+
+    def get_visit_date(self, time_slot):
+        local_start_time = timezone.localtime(time_slot.start_time)
+        return local_start_time.strftime('%d.%m.%Y %H:%M')
+
+    def get_date_time_today(self):
+        today_time = timezone.localtime()
+        return today_time
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['formatted_reservations'] = [(reservation, self.get_visit_date(reservation.time_slot)) for reservation in context['reservations']]
+        context['today_time'] = self.get_date_time_today()      
+        return context
+   
 
 def reservation_success(request):
     return render(request, 'reservation/reservation_success.html')

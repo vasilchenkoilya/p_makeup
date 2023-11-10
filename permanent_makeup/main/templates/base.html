@@ -58,7 +58,7 @@
                                 <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin Panel</a></li>
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                             {% elif user.is_authenticated and not user.is_superuser %}
-                                <li><a class="dropdown-item" href="#">My Visits</a></li>
+                                <li><a class="dropdown-item" href="{% url 'my_reservations' %}">My Visits</a></li>
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                             {% else %}
                                 <li><a class="dropdown-item" href="{% url 'signup' %}">Register</a></li>

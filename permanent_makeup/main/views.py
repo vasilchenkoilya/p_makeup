@@ -4,10 +4,7 @@ from .forms import ReviewForm , BookingForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from django.conf import settings
-
-admin_email = settings.ADMINS[0][1]
-
+from permanent_makeup.local_settings import ADMMIN_EMAIL
 
 def gallery_view(request):
     images = models.WorkGalllery.objects.all().order_by('-created_at')
@@ -49,15 +46,25 @@ def reservation_view(request):
             reservation.customer = request.user
             reservation.save()
 
-            html_user_message = render_to_string('emails/user_reservation_email.html')
-            html_admin_message = render_to_string('emails/admin_reservation_email.html')
+            mail_context = {
+                'reservation': reservation,
+                'user': request.user,
+            }
+            html_user_message = render_to_string('emails/user_reservation_email.html', context=mail_context )
+            html_admin_message = render_to_string('emails/admin_reservation_email.html', context=mail_context)
             send_mail(
+                "Reservation confirmation",
+                "",
+                "admin@megamakeup.com",                
                 [request.user.email],
                 html_message=html_user_message,
                 fail_silently=False,
             )
             send_mail(
-                [admin_email],
+                "New reservation",
+                "",
+                "admin@megamakeup.com",
+                [ADMMIN_EMAIL],
                 html_message=html_admin_message,
                 fail_silently=False,
             )

@@ -1,13 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
-from django.views.generic import  CreateView
-from django.http import JsonResponse
-from django.views.decorators.http import require_http_methods
 from . import models
 from .forms import ReviewForm , BookingForm
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 
+admin_email = settings.ADMINS[0][1]
 
 
 def gallery_view(request):
@@ -49,6 +48,19 @@ def reservation_view(request):
             reservation = form.save(commit=False)
             reservation.customer = request.user
             reservation.save()
+
+            html_user_message = render_to_string('emails/user_reservation_email.html')
+            html_admin_message = render_to_string('emails/admin_reservation_email.html')
+            send_mail(
+                [request.user.email],
+                html_message=html_user_message,
+                fail_silently=False,
+            )
+            send_mail(
+                [admin_email],
+                html_message=html_admin_message,
+                fail_silently=False,
+            )
             return redirect(success_url)
     else:
         form = BookingForm()

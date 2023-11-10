@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>reservation for {{ reservation.service.name }} by {{ user.get_username }}</title>
+</head>
+<body>
+    <h2>{{ user.get_username }} has booked {{ reservation.service.name }} at {{ reservation.time_slot.start_time }} </h2>
+</body>
+</html>

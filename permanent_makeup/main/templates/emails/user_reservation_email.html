@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>You reservation for {{ reservation.service.name }}</title>
+</head>
+<body>
+    <h2>Dear, {{ user.get_username }}, Your reservation was successfully created</h2>
+    <p>Yor visit is booked at {{ reservation.time_slot.start_time }}</p>
+    <p>Thank You, an have a nice day!</p>
+</body>
+</html>

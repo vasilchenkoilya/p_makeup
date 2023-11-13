@@ -27,7 +27,8 @@
             {% endif %}</td>
             <td>
               {% if not reservation.time_slot.is_available  and reservation.time_slot.start_time > today_time %}
-                <button type="button" class="btn btn-secondary">  Cancell my visit </button>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#cancelModal{{reservation.id}}">Cancel my visit</button>
+              {% include 'reservation/reservation_cancel.html' %}
               {% elif reservation.time_slot.end_time < today_time %}
                 <button type="button" class="btn btn-secondary">Leave Review</button>
               {% else %}

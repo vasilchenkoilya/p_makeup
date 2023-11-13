@@ -100,6 +100,13 @@ class MyReservationsView(LoginRequiredMixin, ListView):
         context['formatted_reservations'] = [(reservation, self.get_visit_date(reservation.time_slot)) for reservation in context['reservations']]
         context['today_time'] = self.get_date_time_today()      
         return context
+    
+    def post(self, request, *args, **kwargs):
+        reservation_id = request.POST.get('reservation_id')
+        reservation = get_object_or_404(models.Reservation, id=reservation_id)
+        if reservation.customer == request.user and reservation.time_slot.start_time > timezone.now():
+            reservation.delete()
+        return redirect('my_reservations')
    
 
 def reservation_success(request):

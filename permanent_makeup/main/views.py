@@ -22,16 +22,19 @@ def service_detail(request, service_slug):
     service = get_object_or_404(models.Service, slug=service_slug)
     return render(request, 'main/service_detail.html', {'service': service})
 
+def leave_review(request):
+    form = ReviewForm(request.POST)
+    if form.is_valid() and request.user.is_authenticated:
+        review = form.save(commit=False)
+        review.author = request.user
+        review.save()
+    return redirect('reviews_page')
+
 def reviews_page(request):
     reviews = models.Review.objects.all().order_by('-created_at')
     form = ReviewForm()
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid() and request.user.is_authenticated:
-            review = form.save(commit=False)
-            review.author = request.user
-            review.save()
-            return redirect('reviews_page')
+        return leave_review(request)
     context = {
         'reviews': reviews,
         'form': form,
@@ -97,16 +100,21 @@ class MyReservationsView(LoginRequiredMixin, ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['review_form'] = ReviewForm()
         context['formatted_reservations'] = [(reservation, self.get_visit_date(reservation.time_slot)) for reservation in context['reservations']]
         context['today_time'] = self.get_date_time_today()      
         return context
     
     def post(self, request, *args, **kwargs):
-        reservation_id = request.POST.get('reservation_id')
-        reservation = get_object_or_404(models.Reservation, id=reservation_id)
-        if reservation.customer == request.user and reservation.time_slot.start_time > timezone.now():
-            reservation.delete()
-        return redirect('my_reservations')
+        action = request.POST.get('action')
+        if action == 'leave_review':
+            return leave_review(request)
+        else:
+            reservation_id = request.POST.get('reservation_id')
+            reservation = get_object_or_404(models.Reservation, id=reservation_id)
+            if reservation.customer == request.user and reservation.time_slot.start_time > timezone.now():
+                reservation.delete()
+            return redirect('my_reservations')
    
 
 def reservation_success(request):

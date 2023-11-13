@@ -27,12 +27,16 @@
             {% endif %}</td>
             <td>
               {% if not reservation.time_slot.is_available  and reservation.time_slot.start_time > today_time %}
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#cancelModal{{reservation.id}}">Cancel my visit</button>
-              {% include 'reservation/reservation_cancel.html' %}
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#cancelModal{{reservation.id}}">Cancel my visit</button>
+                {% include 'reservation/reservation_cancel.html' %}
               {% elif reservation.time_slot.end_time < today_time %}
-                <button type="button" class="btn btn-secondary">Leave Review</button>
+                <input type="hidden" name="action" value="leave_review">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                  Leave Review
+                </button>
+                {% include 'reviews/leave_review_modal.html' with form=review_form %}
               {% else %}
-                <button type="button" class="btn btn-secondary">Book new visit</button>
+                <button type="button" class="btn btn-secondary" on-click="window.location.href='{% url 'reservation' %}'">Book new visit</button>
               {% endif %}
             </td> 
         </tr>

@@ -19,24 +19,7 @@
         <button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#reviewModal">
             Add Review
         </button>
-        <!-- Modal -->
-        <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content bg-dark text-white">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="reviewModalLabel">New Review</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit" class="btn btn-success">Submit Review</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include 'reviews/leave_review_modal.html' %}
     {% else %}
         <p class="mt-4">Please <a href="{% url 'login' %}">log in</a> to add a review.</p>
         <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a> today!</p>

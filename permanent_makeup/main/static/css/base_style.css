@@ -1,33 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('/static/images/bg_new.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+main {
+    flex: 1 0 auto;
+    padding-bottom: 10vh;
+}
+
 header {
     font-family: "Dancing Script", cursive;
     font-weight: 500;
     font-size: 1.5em;
+    flex: 0 0 10vh;
     }
-    .navbar-brand {
+.navbar-brand {
     font-family: "Dancing Script", cursive;
     font-weight: 600;
     font-size: 2em;
     }
+.navbar.bg-dark {
+    background-color: #000000 !important;
+    }
     
+footer {
+    flex: 0 0 10vh;
+    min-height: 15vh;
+    overflow: hidden;
+}
+footer.bg-dark {
+    background-color: #000000 !important;
+}
 .container {
     min-height: 100%;
 }
 
-.footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    height: 110px;
-    background-color: #2b3035;
-}
-.full-screen-background {
+/* .full-screen-background {
     position: relative;
     min-height: 100vh;
     width: 100%; 
     background: url('/static/images/bg2.png') no-repeat center center; 
     background-size: cover;
     z-index: -1;
-}
+} */
 
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

@@ -4,7 +4,7 @@ from .forms import ReviewForm , BookingForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from permanent_makeup.local_settings import ADMMIN_EMAIL
+from permanent_makeup.settings import ADMIN_EMAIL
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
@@ -71,7 +71,7 @@ def reservation_view(request):
                 "New reservation",
                 "",
                 "admin@megamakeup.com",
-                [ADMMIN_EMAIL],
+                [ADMIN_EMAIL],
                 html_message=html_admin_message,
                 fail_silently=False,
             )
@@ -119,15 +119,3 @@ class MyReservationsView(LoginRequiredMixin, ListView):
 
 def reservation_success(request):
     return render(request, 'reservation/reservation_success.html')
-
-
-#class ReservationView(LoginRequiredMixin, CreateView):
-#     template_name = 'reservation/reservation.html'
-#     form_class = BookingForm
-#     success_url = 'reservation_success' 
-
-#     def form_valid(self, form):
-#         reservation = form.save(commit=False)
-#         reservation.customer = self.request.user
-#         reservation.save()
-#         return redirect(self.success_url)

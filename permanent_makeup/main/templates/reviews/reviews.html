@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-4 bg-dark text-white">
-    <h2 class="text-center">Customer Reviews</h2>
-    <div class="list-group">
-        {% for review in reviews %}
-        <div class="list-group-item list-group-item-action flex-column align-items-start bg-secondary text-white">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{ review.author.username }} for {{ review.service.name }}</h5>
-                <small class="text-muted">{{ review.created_at }}</small>
-            </div>
+    <h2 class="text-center">Our Clients Reviews</h2>
+    {% for review in reviews %}
+    <div class="card bg-secondary text-white mb-3">
+        <div class="card-header">
+            <h5 class="mb-1">{{ review.author.username }} for {{ review.service.name }}</h5>
+            <small class="text-muted">{{ review.created_at }}</small>
+        </div>
+        <div class="card-body">
             <p class="mb-1">{{ review.text }}</p>
         </div>
-        {% empty %}
-        <div class="list-group-item bg-secondary text-white">No reviews yet.</div>
-        {% endfor %}
     </div>
+    {% empty %}
+    <div class="list-group-item bg-secondary text-white">No reviews yet.</div>
+    {% endfor %}
     {% if user.is_authenticated %}
-        <button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#reviewModal">
+        <button type="button" class="btn btn-secondary mt-4" data-bs-toggle="modal" data-bs-target="#reviewModal">
             Add Review
         </button>
         {% include 'reviews/leave_review_modal.html' %}

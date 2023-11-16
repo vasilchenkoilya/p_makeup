@@ -29,6 +29,7 @@ header {
     font-family: "Dancing Script", cursive;
     font-weight: 600;
     font-size: 2em;
+    color: rgba(253, 4, 211, 0.8) !important;
     }
 .navbar.bg-dark {
     background-color: #000000 !important;
@@ -41,6 +42,7 @@ footer {
 }
 footer.bg-dark {
     background-color: #000000 !important;
+    color: rgba(255, 255, 255, 0.5) !important;
 }
 .container {
     min-height: 100%;
@@ -60,7 +62,7 @@ footer.bg-dark {
     width: 100%;
 }
 .card.mb-3 {
-    min-height: 80vh;
+    /* min-height: 80vh; */
     overflow: hidden; 
     }
     
@@ -72,13 +74,16 @@ footer.bg-dark {
     }
 .container.mt-4.bg-dark {
     background-color: rgba(0, 0, 0, 0.01)!important;
+    color: rgba(255, 255, 255, 0.5) !important;
 }
 
 form.bg-dark {
-    background-color: rgba(0, 0, 0, 0.7) !important; 
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: rgba(255, 255, 255, 0.5) !important; 
 }
 h2.bg-dark {
-    background-color: rgba(0, 0, 0, 0.7) !important; /
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .btn.btn-primary {
@@ -96,3 +101,19 @@ h2.bg-dark {
 .form-control {
     width: 100%;
 }
+.modal-content.bg-dark {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    font-family: "Dancing Script", cursive;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+.card.bg-secondary {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+.card-header small.text-muted {
+    color: rgba(253, 4, 211, 0.3) !important;
+}
+
+
+
+

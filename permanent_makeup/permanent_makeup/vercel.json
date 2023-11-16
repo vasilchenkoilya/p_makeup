@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "permanent_makeup/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "permanent_makeup/wsgi.py"
+      }
+    ]
+}

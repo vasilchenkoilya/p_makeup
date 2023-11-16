@@ -20,7 +20,10 @@ class BookingForm(forms.ModelForm):
         fields = ['service', 'time_slot']
         widgets = {
             'service': forms.Select(attrs={'class': 'form-control'}),
-            'time_slot': DateTimePickerInput(format='%Y-%m-%d %H:%M', attrs={'class': 'form-control'}),
+            'time_slot': DateTimePickerInput(
+                options={'format': 'YYYY-MM-DD HH:mm'},
+                attrs={'class': 'form-control'}
+                ),
         }
         labels = {
             'time_slot': 'Available time :',

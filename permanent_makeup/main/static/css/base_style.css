@@ -81,3 +81,18 @@ footer.bg-dark {
 .form-text.text-muted {
     color: #85888a !important;
     }
+.container.mt-4.bg-dark {
+    background-color: rgba(0, 0, 0, 0.01)!important;
+}
+
+.btn.btn-primary {
+    font-family: "Dancing Script", cursive;
+}
+.btn.btn-dark {
+    font-family: "Dancing Script", cursive;
+    font-size: x-large;
+    background-color: rgba(0, 0, 0, 0.05)
+}
+.form-control {
+    width: 100%;
+}

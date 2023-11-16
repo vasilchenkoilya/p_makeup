@@ -118,4 +118,6 @@ class MyReservationsView(LoginRequiredMixin, ListView):
    
 
 def reservation_success(request):
-    return render(request, 'reservation/reservation_success.html')
+    response = render(request, 'reservation/reservation_success.html')
+    response['Refresh'] = '2; url=/'
+    return response

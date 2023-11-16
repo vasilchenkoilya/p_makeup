@@ -1,13 +1,14 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
+from tinymce.models import HTMLField
 
 User = get_user_model()
 
 
 class Service(models.Model):
     name = models.CharField(max_length=200)
-    description = models.TextField()
+    description = HTMLField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     customers = models.ManyToManyField(User, through='Reservation')
     image = models.ImageField(upload_to='service_image', null=True, blank=True)

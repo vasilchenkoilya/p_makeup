@@ -18,12 +18,12 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = env.bool("DEBUG", False)
-if DEBUG:
-    # If Debug is True, allow all.
-    ALLOWED_HOSTS = ['*']
-else:
-    ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com'])
-
+# if DEBUG:
+#     # If Debug is True, allow all.
+#     ALLOWED_HOSTS = ['*']
+# else:
+#     ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com'])
+ALLOWED_HOSTS = ['.vercel.app']
 
 LOGGING = {
     'version': 1,

@@ -121,3 +121,6 @@ def reservation_success(request):
     response = render(request, 'reservation/reservation_success.html')
     response['Refresh'] = '2; url=/'
     return response
+
+def contacts_view(request):
+    return render(request, 'main/contacts.html')

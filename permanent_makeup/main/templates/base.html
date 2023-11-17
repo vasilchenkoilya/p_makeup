@@ -48,7 +48,7 @@
                         <a class="nav-link" href="{% url 'reviews_page'%}">Reviews</a>
                     </li>
                     <li class="nav-item">                        
-                        <a class="nav-link" href="#">Contacts</a>
+                        <a class="nav-link" href="{% url 'contacts' %}">Contacts</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -77,7 +77,7 @@
             <div class ="full-screen-background"></div>
         {% endblock content %}
     </main>
-    <footer class="bg-dark text-light p-3 text-center position-relative w-100" style="bottom: 0;">
+    <footer class="bg-dark text-strong p-3 text-center position-relative w-100" style="bottom: 0;">
         <section class="footer">
             <div class="container">
                 <div class="row">
@@ -103,6 +103,8 @@
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-youtube"></i></a>
                             <a href="#"><i class="fab fa-instagram"></i></a>
+                            <p></p>
+                            <p class="text-muted">Copyright &copy; 2023 Ilya Vasilchenko</p>
                         </div>
                     </div>
                 </div>

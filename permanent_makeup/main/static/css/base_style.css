@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     display: flex;
     flex-direction: column;
@@ -24,26 +25,38 @@ header {
     font-weight: 500;
     font-size: 1.5em;
     flex: 0 0 10vh;
-    }
+}
+
 .navbar-brand {
     font-family: "Dancing Script", cursive;
     font-weight: 600;
     font-size: 2em;
     color: rgba(253, 4, 211, 0.8) !important;
-    }
+}
+
 .navbar.bg-dark {
     background-color: #000000 !important;
-    }
-    
+}
+
+.navbar-nav .dropdown-menu {
+    background-color: #000000 !important; 
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+    background-color: rgba(253, 4, 211, 0.6) !important;
+}
+
 footer {
     flex: 0 0 10vh;
     min-height: 15vh;
     overflow: hidden;
 }
+
 footer.bg-dark {
     background-color: #000000 !important;
     color: rgba(255, 255, 255, 0.5) !important;
 }
+
 .container {
     min-height: 100%;
 }
@@ -52,11 +65,13 @@ footer.bg-dark {
     min-height: 80vh; 
     width: 100%;
 }
+
 #carouselgallery .carousel-item img {
     height: 80vh;
     object-fit: cover;
     width: 100%;
 }
+
 .card.mb-3 {
     width: 80%;
     overflow: hidden; 
@@ -64,6 +79,10 @@ footer.bg-dark {
     
 .card-body {
     overflow-y: auto; 
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    font-size: large;
     }
 
 .card-title {
@@ -78,15 +97,35 @@ footer.bg-dark {
     font-weight: 600;
     font-size: large;
 }
+
 .price {
     font-family: "Dancing Script", cursive;
     color: rgba(255, 255, 255, 0.5);
     font-size: medium;
 }
 
+.service {
+    font-family: "Dancing Script", cursive;
+    color: rgba(253, 4, 211, 0.6);
+    font-size: x-large;
+}
+
+.author {
+    font-family: "Dancing Script", cursive;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: xx-large;
+}
+.text-light {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    font-size: x-large;
+}
+
 .form-text.text-muted {
     color: #85888a !important;
     }
+
 .container.mt-4.bg-dark {
     background-color: rgba(0, 0, 0, 0.01)!important;
     color: rgba(255, 255, 255, 0.5) !important;
@@ -94,40 +133,67 @@ footer.bg-dark {
 
 form.bg-dark {
     background-color: rgba(0, 0, 0, 0.7) !important;
-    color: rgba(255, 255, 255, 0.5) !important; 
+    color: #C0C0C0 !important;
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5) !important;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    font-size: x-large;
 }
+
 h2.bg-dark {
     background-color: rgba(0, 0, 0, 0.7) !important;
-    color: rgba(255, 255, 255, 0.5) !important;
+    color: #C0C0C0 !important;
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5) !important;
+    font-family: "Dancing Script", cursive;
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+p.bg-dark {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: #C0C0C0 !important;
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5) !important;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    font-size: large;
 }
 
 .btn.btn-primary {
     font-family: "Dancing Script", cursive;
 }
+
 .btn.btn-dark {
     font-family: "Dancing Script", cursive;
     font-size: x-large;
     background-color: rgba(0, 0, 0, 0.05)
 }
+
 .btn.btn-outline-light {
     font-family: "Dancing Script", cursive;
     font-size: large;
 }
+
 .form-control {
     width: 100%;
 }
+
 .modal-content.bg-dark {
     background-color: rgba(0, 0, 0, 0.7) !important;
-    font-family: "Dancing Script", cursive;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    font-size: large;
     color: rgba(255, 255, 255, 0.5) !important;
 }
+
 .card.bg-secondary {
     background-color: rgba(0, 0, 0, 0.5) !important;
     color: rgba(255, 255, 255, 0.5) !important;
 }
+
 .card-header small.text-muted {
     color: rgba(253, 4, 211, 0.3) !important;
 }
+
 .display-4 {
     color: #C0C0C0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -145,6 +211,28 @@ h2.bg-dark {
     font-weight: 500;
 }
 
+.contacts-container h1 {
+    margin-top: 7vh;
+    font-family: "Dancing Script", cursive;
+    font-weight: 700;
+    color: #C0C0C0;
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5);
+    font-size: xx-large !important;
+}
+
+.contacts-container p {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    font-size: large;
+    color: #C0C0C0;
+}
+
+.contacts-container a {
+    color: rgba(253, 4, 211, 0.6);
+    font-family: 'Dosis', sans-serif;
+    font-size: large;
+    font-weight: 500;
+}
 
 
 

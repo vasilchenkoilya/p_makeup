@@ -19,7 +19,7 @@ DEBUG = env.bool("DEBUG", False)
 #     ALLOWED_HOSTS = ['*']
 # else:
 #     ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com'])
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 
 LOGGING = {
     'version': 1,
@@ -40,7 +40,9 @@ LOGGING = {
 
 INSTALLED_APPS = [
     'main',
-    'tinymce',	
+    'tinymce',
+    'admin_interface',
+    'colorfield',	
     'accounts',
     'bootstrap_datepicker_plus',
     'django.contrib.admin',

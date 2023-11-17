@@ -16,7 +16,7 @@ body {
 
 main {
     flex: 1 0 auto;
-    padding-bottom: 10vh;
+    padding-bottom: 0;
 }
 
 header {
@@ -47,11 +47,7 @@ footer.bg-dark {
 .container {
     min-height: 100%;
 }
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    .full-screen-background {
-        min-height: 100vh;
-    }
-}
+
 #carouselgallery .carousel-item {
     min-height: 80vh; 
     width: 100%;
@@ -62,13 +58,32 @@ footer.bg-dark {
     width: 100%;
 }
 .card.mb-3 {
-    /* min-height: 80vh; */
+    width: 80%;
     overflow: hidden; 
     }
     
-    .card-body {
+.card-body {
     overflow-y: auto; 
     }
+
+.card-title {
+    color: rgba(253, 4, 211, 0.6);
+    font-family: "Dancing Script", cursive;
+    font-size: xx-large;
+}
+
+.card-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    font-size: large;
+}
+.price {
+    font-family: "Dancing Script", cursive;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: medium;
+}
+
 .form-text.text-muted {
     color: #85888a !important;
     }
@@ -112,6 +127,22 @@ h2.bg-dark {
 }
 .card-header small.text-muted {
     color: rgba(253, 4, 211, 0.3) !important;
+}
+.display-4 {
+    color: #C0C0C0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 4vh; 
+    margin-bottom: 10vh;
+    font-family: "Dancing Script", cursive;
+    font-weight: 700;
+}
+
+.lead {
+    color: #C0C0C0; 
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 34vh;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
 }
 
 

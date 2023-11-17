@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import environ
+from . import local_settings
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -8,11 +9,6 @@ env = environ.Env(
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -23,7 +19,7 @@ DEBUG = env.bool("DEBUG", False)
 #     ALLOWED_HOSTS = ['*']
 # else:
 #     ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com'])
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 
 LOGGING = {
     'version': 1,
@@ -90,21 +86,7 @@ WSGI_APPLICATION = 'permanent_makeup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'URL': env('DATABASE_URL'),
-        'NAME': env('PGDATABASE'),
-        'USER': env('PGUSER'),
-        'PASSWORD': env('PGPASSWORD'),
-        'HOST': env('PGHOST'),
-        'PORT': env("PGPORT"),
-    },
-    'local' : {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = local_settings.LOCAL_DB
 
 
 # Password validation

@@ -20,7 +20,7 @@ def index(request):
 
 def service_detail(request, service_slug):
     service = get_object_or_404(models.Service, slug=service_slug)
-    return render(request, 'main/service_detail.html', {'service': service})
+    return render(request, 'main/service_split.html', {'service': service})
 
 def leave_review(request):
     form = ReviewForm(request.POST)

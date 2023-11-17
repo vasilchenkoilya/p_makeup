@@ -1,4 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="full-screen-background">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="display-4 text-center">Express yourself with permanent makeup</h1>
+            <p class="lead text-center">Permanent makeup is a way to customize your look and show your personality. You can choose from a range of options, such as eyeliner, lip color, blush, and more. Permanent makeup is also ideal for people who have allergies, scars, or medical conditions that affect their appearance.</p>
+            <div class="text-center">
+                <a href="{% url 'gallery' %}" class="btn btn-dark">See our gallery of permanent makeup results</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

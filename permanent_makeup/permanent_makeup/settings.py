@@ -19,21 +19,21 @@ DEBUG = env.bool("DEBUG", False)
 #     ALLOWED_HOSTS = ['*']
 # else:
 #     ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com'])
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.vercel.app',]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-    },
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'root': {
+#         'handlers': ['console'],
+#         'level': 'DEBUG',
+#     },
+# }
 
 
 # Application definition

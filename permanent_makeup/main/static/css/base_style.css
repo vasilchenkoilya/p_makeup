@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-image: url('/static/images/bg_new.jpg');
+    background-image: url("https://makeup-bkt.s3.amazonaws.com/images/bg_new.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

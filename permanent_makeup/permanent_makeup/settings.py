@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 import environ
-from . import local_settings
+from . import db_settings
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -19,7 +19,7 @@ DEBUG = env.bool("DEBUG", False)
 #     ALLOWED_HOSTS = ['*']
 # else:
 #     ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com'])
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.vercel.app',]
 
 LOGGING = {
     'version': 1,
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'colorfield',	
     'accounts',
     'bootstrap_datepicker_plus',
+    'storages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,7 +89,7 @@ WSGI_APPLICATION = 'permanent_makeup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = local_settings.LOCAL_DB
+DATABASES = db_settings.CLOUD_DB
 
 
 # Password validation
@@ -148,3 +149,25 @@ SITE_NAME = "megamakeup"
 DOMAIN = "megamakeup.com"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AWS configuration
+
+
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+
+# AWS S3 bucket configuration
+
+
+AWS_STORAGE_BUCKET_NAME = 'makeup-bkt'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE = False
+
+STORAGES = {
+    'default': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+    },
+    'staticfiles': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+    },
+}

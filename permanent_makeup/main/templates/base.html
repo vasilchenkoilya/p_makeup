@@ -31,6 +31,32 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Treatments
                             </a>
+                            <ul class="dropdown-menu">
+                                {% for service in services %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'service_detail' service_slug=service.slug %}">
+                                        {{ service.name }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>   
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'reservation' %}">Book your Visit</a>
+                        </li>            
+                        <li class="nav-item">
+                            <a class="nav-link" href="/gallery/">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'reviews_page'%}">Reviews</a>
+                        </li>
+                        <li class="nav-item">                        
+                            <a class="nav-link" href="{% url 'contacts' %}">Contacts</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-users"></i>
+                            </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 {% if user.is_authenticated and user.is_superuser %}
                                     <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin Panel</a></li>
@@ -38,20 +64,20 @@
                                 {% elif user.is_authenticated and not user.is_superuser %}
                                     <li><a class="dropdown-item" href="{% url 'my_reservations' %}">My Visits</a></li>
                                     <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-                                {% else %}
-                                    <li><a class="dropdown-item" href="{% url 'signup' %}">Register</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-                                {% endif %}
-                            </ul>   
-                        </li>      
-                    </ul>
+                            {% else %}
+                                <li><a class="dropdown-item" href="{% url 'signup' %}">Register</a></li>
+                                <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                            {% endif %}
+                        </ul>   
+                    </li>      
+                </ul>
                 </div>
             </div>
         </nav>
     </header>
     <main>
         {% block content %}
-            <div class="full-screen-background"></div>
+            <div class ="full-screen-background"></div>
         {% endblock content %}
     </main>
     <footer class="bg-dark text-strong p-3 text-center position-relative w-100" style="bottom: 0;">
@@ -69,8 +95,8 @@
                         <h4>Contacts</h4>
                         <ul class="list-unstyled">
                             <li><a class="nav-link" href="#">some phone</a></li>
-                            <li><a class="nav-link" href="#">some email</a></li>
-                            <li><a class="nav-link" href="tel:5551234569">some messenger</a></li>
+                            <li><a class ="nav-link" href="#">some email</a></li>
+                            <li><a class = "nav-link" href="tel:5551234569">some messenger</a></li>
                         </ul>
                     </div>
 
@@ -81,7 +107,7 @@
                             <a href="#"><i class="fab fa-youtube"></i></a>
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <p></p>
-                            <p class="text-muted">Copyright © 2023 Ilya Vasilchenko</p>
+                            <p class="text-muted">Copyright &copy; 2023 Ilya Vasilchenko</p>
                         </div>
                     </div>
                 </div>

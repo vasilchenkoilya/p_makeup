@@ -4,8 +4,8 @@ from . import models
 from django import forms
 
 
-@admin.register(models.WorkGalllery)
-class WorkGallleryAdmin(admin.ModelAdmin):
+@admin.register(models.WorkGallery)
+class WorkGalleryAdmin(admin.ModelAdmin):
     list_display = ('image', 'title', 'created_at')
     list_filter = ('created_at',)
     search_fields = ('title','created_at')

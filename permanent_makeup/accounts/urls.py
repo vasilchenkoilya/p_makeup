@@ -10,5 +10,4 @@ path('reset/<uidb64>/<token>/', MyPasswordResetConfirmView.as_view(), name='pass
 path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),  
 path('password_reset/complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-
 ]

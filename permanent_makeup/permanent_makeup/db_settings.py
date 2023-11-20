@@ -19,6 +19,7 @@ CLOUD_DB = {
         'PORT': env("PGPORT"),
     }
 }
+
 LOCAL_DB = {
         'default' : {
         'ENGINE': 'django.db.backends.sqlite3',

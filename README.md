@@ -117,7 +117,7 @@ Registered users can view their reservations on the My VIsits page. Here, you ca
 
 ## Live Demo
 
-To see the project in action, you can visit the live demo at [https://ilyaproject.vercel.app](https://ilyaproject.vercel.app).
+To see the project in action, you can visit the live demo at [https://ilyaprojects.tech](https://ilyaprojects.tech).
 
 Please note that this is a live demo, and any data or changes made on the demo site may not be permanent.
 

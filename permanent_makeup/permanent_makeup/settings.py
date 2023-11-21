@@ -15,7 +15,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.vercel.app', 'ilyaprojects.tech']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.vercel.app', 'ilyaprojects.tech', 'www.ilyaprojects.tech']
 
 LOGGING = {
     'version': 1,

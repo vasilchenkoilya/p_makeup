@@ -9,11 +9,11 @@
           Are you sure you want to cancel this reservation?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
           <form method="post">
             {% csrf_token %}
             <input type="hidden" name="reservation_id" value="{{ reservation.id }}">
-            <button type="submit" class="btn btn-primary">Cancel my visit</button>
+            <button type="submit" class="btn btn-outline-danger">Cancel my visit</button>
           </form>
         </div>
       </div>

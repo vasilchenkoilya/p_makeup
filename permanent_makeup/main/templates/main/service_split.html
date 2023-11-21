@@ -11,7 +11,7 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{ service.name }}</h5>
-          <p class="card-text">{{ service.description }}</p>
+          <p class="card-text">{{ service.description|safe }}</p>
           <p class="card-text"><span class ="price">£{{ service.price }}</span></p>
           <div class="text-center">
             <a href="{% url 'reservation' %}" class="btn btn-dark">Book Your Visit</a>

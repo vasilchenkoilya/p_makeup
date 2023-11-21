@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4 bg-transparent text-white visits-container">
-    <div class="card bg-dark text-white">
-        <div class="card-body">
-            <table class="table table-dark table-hover">
+<div class="card mb-3 bg-transparent text-white shadow-none" style="max-width: 100%; border: none;">
+    <div class="card bg-transparent text-white shadow-none" style="max-width: 100%; border: none;">
+        <div class="card-body bg-transparent text-white shadow-none" style="max-width: 100%; border: none;">
+            <table class="table table-dark table-hover bg-transparent text-white shadow-none" style="max-width: 100%; border: none;">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Treatment</th>
-                    <th scope="col">Visit date</th>
-                    <th scope="col">Status</th>
-                    <th scope="col"></th>
+                    <th scope="col" style="background-color: transparent">#</th>
+                    <th scope="col" style="background-color: transparent">Treatment</th>
+                    <th scope="col" style="background-color: transparent">Visit date</th>
+                    <th scope="col" style="background-color: transparent">Status</th>
+                    <th scope="col" style="background-color: transparent"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for reservation, formatted_date in formatted_reservations %}
                     <tr>
-                      <th scope="row">{{ forloop.counter }}</th>
-                      <td>{{ reservation.service.name }}</td>
-                      <td>{{ formatted_date }}</td>
-                      <td>
+                      <th scope="row" style="background-color: transparent">{{ forloop.counter }}</th>
+                      <td style="background-color: transparent">{{ reservation.service.name }}</td>
+                      <td style="background-color: transparent">{{ formatted_date }}</td>
+                      <td style="background-color: transparent">
                         {% if not reservation.time_slot.is_available  and reservation.time_slot.start_time > today_time %}
                           Available
                         {% elif reservation.time_slot.end_time < today_time %}
@@ -28,18 +28,18 @@
                         {% else %}
                           Unavailable / Canceled
                         {% endif %}</td>
-                        <td>
+                        <td style="background-color: transparent">
                           {% if not reservation.time_slot.is_available  and reservation.time_slot.start_time > today_time %}
                             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#cancelModal{{reservation.id}}">Cancel my visit</button>
                             {% include 'reservation/reservation_cancel.html' %}
                           {% elif reservation.time_slot.end_time < today_time %}
                             <input type="hidden" name="action" value="leave_review">
-                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#reviewModal">
                               Leave Review
                             </button>
                             {% include 'reviews/leave_review_modal.html' with form=review_form %}
                           {% else %}
-                            <button type="button" class="btn btn-secondary" on-click="window.location.href='{% url 'reservation' %}'">Book new visit</button>
+                            <button type="button" class="btn btn-outline-light" on-click="window.location.href='{% url 'reservation' %}'">Book new visit</button>
                           {% endif %}
                         </td> 
                     </tr>

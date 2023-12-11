@@ -67,6 +67,9 @@ class TimeSlot(models.Model):
     end_time = models.DateTimeField()
     is_available = models.BooleanField(default=True)
 
+    def __str__(self):
+        return f"{self.start_time.strftime('%Y-%m-%d %H:%M')} - {self.end_time.strftime('%H:%M')}"
+
 
 class Reservation(models.Model):
     """
